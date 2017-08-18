@@ -5,12 +5,13 @@ package apoio;
  * and open the template in the editor.
  */
 /**
- *
+ * 
  * @author fabricio
  */
 import java.io.FileInputStream;
 import java.sql.*;
 import java.util.*;
+
 
 public class ConexaoBD {
 
