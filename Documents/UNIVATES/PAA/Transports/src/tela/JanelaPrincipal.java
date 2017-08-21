@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author Tainá Fiegenbaum
@@ -55,7 +56,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jprodutos = new javax.swing.JMenuItem();
-        jpromocoes = new javax.swing.JMenuItem();
+        jCaminhoes = new javax.swing.JMenuItem();
         jservicos = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -198,13 +199,13 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(jprodutos);
 
-        jpromocoes.setText("Caminhões");
-        jpromocoes.addActionListener(new java.awt.event.ActionListener() {
+        jCaminhoes.setText("Caminhões");
+        jCaminhoes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jpromocoesActionPerformed(evt);
+                jCaminhoesActionPerformed(evt);
             }
         });
-        jMenu1.add(jpromocoes);
+        jMenu1.add(jCaminhoes);
 
         jservicos.setText("Carga");
         jservicos.addActionListener(new java.awt.event.ActionListener() {
@@ -276,12 +277,12 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jPanel1FocusLost
 
-    private void jpromocoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jpromocoesActionPerformed
-IfrProduto IfrProduto = new IfrProduto();
-        jDesktopPane1.add(IfrProduto);
-        IfrProduto.setVisible(true);
+    private void jCaminhoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCaminhoesActionPerformed
+        IfrCaminhao IfrCaminhao = new IfrCaminhao();
+        jDesktopPane1.add(IfrCaminhao);
+        IfrCaminhao.setVisible(true);
 
-    }//GEN-LAST:event_jpromocoesActionPerformed
+    }//GEN-LAST:event_jCaminhoesActionPerformed
 
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
 
@@ -303,11 +304,11 @@ IfrProduto IfrProduto = new IfrProduto();
     }//GEN-LAST:event_jservicosActionPerformed
 
     private void jatendentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jatendentesActionPerformed
- 
+
     }//GEN-LAST:event_jatendentesActionPerformed
 
     private void jclientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jclientesActionPerformed
- 
+
     }//GEN-LAST:event_jclientesActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
@@ -355,6 +356,7 @@ IfrProduto IfrProduto = new IfrProduto();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JMenuItem jCaminhoes;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -377,7 +379,6 @@ IfrProduto IfrProduto = new IfrProduto();
     private javax.swing.JMenuItem jclientes;
     private javax.swing.JMenu jpessoas;
     private javax.swing.JMenuItem jprodutos;
-    private javax.swing.JMenuItem jpromocoes;
     private javax.swing.JMenuItem jservicos;
     private javax.swing.JMenuItem menuItemSair;
     private javax.swing.JMenu menuRelatorios;
