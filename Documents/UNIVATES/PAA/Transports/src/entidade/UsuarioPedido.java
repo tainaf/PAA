@@ -5,10 +5,6 @@
  */
 package entidade;
 
-/**
- *
- * @author gtren_000
- */
 public class UsuarioPedido {
     private int idUsuario;
     private int idPedido;
@@ -29,10 +25,5 @@ public class UsuarioPedido {
     public int getIdUsuario() {
         return idUsuario;
     }
-
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-    
-    
+ 
 }
