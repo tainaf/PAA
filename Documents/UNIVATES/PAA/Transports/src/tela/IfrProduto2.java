@@ -31,6 +31,7 @@ public class IfrProduto2 extends javax.swing.JInternalFrame {
         this.setSize(800, 500);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
+        new ProdutosDAO().popularTabela(tblProdutos, "");
     }
 
     /**
@@ -310,7 +311,7 @@ public class IfrProduto2 extends javax.swing.JInternalFrame {
             pro.setIdprodutos(Integer.parseInt( tfdvalor.getText()));
             pro.setNome(tfdDescricao.getText());
             pro.setPeso(Integer.parseInt(tfdvalor1.getText()));
-          pro.setDescricao(tfdDescricao1.getText());
+            pro.setDescricao(tfdDescricao1.getText());
             
             sessao.save(pro);
             t.commit();

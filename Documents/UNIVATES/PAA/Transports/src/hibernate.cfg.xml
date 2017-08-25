@@ -7,13 +7,14 @@
     <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/Transports</property>
     <property name="hibernate.connection.username">postgres</property>
     <property name="hibernate.connection.password">postgres</property>
-    <mapping resource="entidade/Caminhao.hbm.xml"/>
-    <mapping resource="entidade/Pedido.hbm.xml"/>
+    <mapping class="entidade.Caminhao"/>
+    <mapping class="entidade.Pedido"/>
+    <mapping class="entidade.Pedido"/>
     <mapping resource="entidade/Rua.hbm.xml"/>
     <mapping resource="entidade/Endereco.hbm.xml"/>
     <mapping resource="entidade/Estado.hbm.xml"/>
     <mapping resource="entidade/Carga.hbm.xml"/>
-    <mapping resource="entidade/Produtos.hbm.xml"/>
+    <mapping class="entidade.Produtos" file="" jar="" package="" resource=""/>
     <mapping resource="entidade/Pessoa.hbm.xml"/>
     <mapping resource="entidade/Cidade.hbm.xml"/>
     <mapping resource="entidade/Permissoes.hbm.xml"/>
