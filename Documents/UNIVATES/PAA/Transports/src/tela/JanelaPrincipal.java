@@ -266,7 +266,9 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-
+ //IfrProdutos IfrProdutos = new IfrProdutos();
+        // jDesktopPane1.add(IfrProdutos);
+        //IfrProdutos.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jPanel1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel1FocusGained
@@ -294,9 +296,9 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
     private void jprodutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jprodutosActionPerformed
 
-        Produtos Produtos = new Produtos();
-        jDesktopPane1.add(Produtos);
-        Produtos.setVisible(true);
+        IfrProduto2 IfrProduto2 = new IfrProduto2();
+        jDesktopPane1.add(IfrProduto2);
+        IfrProduto2.setVisible(true);
     }//GEN-LAST:event_jprodutosActionPerformed
 
     private void jservicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jservicosActionPerformed

@@ -6,8 +6,15 @@
 
 package tela;
 
+import entidade.Caminhao;
+import hibernate.HibernateUtil;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import javax.swing.JOptionPane;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import templates.templateTitulos;
 
 /**
  *
@@ -463,7 +470,30 @@ public class IfrCaminhao extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+Session sessao = null;
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            Transaction t = sessao.beginTransaction();
 
+            Caminhao cam = new Caminhao();
+            
+            cam.setMarca((String) jComboBox1.getSelectedItem());
+            cam.setModelo((String) jComboBox2.getSelectedItem());
+            cam.setAno(Integer.parseInt(tfdvalor.getText()));
+            cam.setCarga(Integer.parseInt(tfdvalor3.getText()));
+            cam.setPlaca(tfdvalor2.getText());
+            cam.setPlaca(tfdvalor4.getText());
+            
+            sessao.save(cam);
+            t.commit();
+
+        } catch (HibernateException he) {
+            he.printStackTrace();
+        } finally {
+            sessao.close();
+        }
+    
+       
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**
