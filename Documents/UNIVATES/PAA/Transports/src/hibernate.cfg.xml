@@ -3,9 +3,20 @@
 <hibernate-configuration>
   <session-factory>
     <property name="hibernate.dialect">org.hibernate.dialect.DerbyDialect</property>
-    <property name="hibernate.connection.driver_class">org.apache.derby.jdbc.ClientDriver</property>
-    <property name="hibernate.connection.url">jdbc:derby://localhost:1527/sample</property>
-    <property name="hibernate.connection.username">app</property>
-    <property name="hibernate.connection.password">app</property>
+    <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+    <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/Transports</property>
+    <property name="hibernate.connection.username">postgres</property>
+    <property name="hibernate.connection.password">postgres</property>
+    <mapping resource="entidade/Caminhao.hbm.xml"/>
+    <mapping resource="entidade/Pedido.hbm.xml"/>
+    <mapping resource="entidade/Rua.hbm.xml"/>
+    <mapping resource="entidade/Endereco.hbm.xml"/>
+    <mapping resource="entidade/Estado.hbm.xml"/>
+    <mapping resource="entidade/Carga.hbm.xml"/>
+    <mapping resource="entidade/Produtos.hbm.xml"/>
+    <mapping resource="entidade/Pessoa.hbm.xml"/>
+    <mapping resource="entidade/Cidade.hbm.xml"/>
+    <mapping resource="entidade/Permissoes.hbm.xml"/>
+    <mapping resource="entidade/Usuario.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>
