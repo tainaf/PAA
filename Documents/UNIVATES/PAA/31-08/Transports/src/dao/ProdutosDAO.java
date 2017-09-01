@@ -120,19 +120,11 @@ public class ProdutosDAO {
                  
                  dadosTabela[lin][0] = p.getId();
                  dadosTabela[lin][1] = p.getDescricao();
+                 dadosTabela[lin][2] = p.getPeso();
+                 dadosTabela[lin][3] = p.getSituacao();
+                 
              }
             
-            
-            while (resultado.next()) {
-
-                dadosTabela[lin][0] = p.getId();
-                dadosTabela[lin][1] = resultado.getObject("usuario");
-                dadosTabela[lin][2] = resultadoQ.getObject("senha");
-                dadosTabela[lin][3] = resultadoQ.getObject("situacao");
-                dadosTabela[lin][4] = resultadoQ.getObject("pessoa_id");
-
-                lin++;
-            }
         } catch (Exception e) {
             System.out.println("problemas para popular tabela...");
             System.out.println(e);
@@ -155,6 +147,6 @@ public class ProdutosDAO {
                 }
                 return Object.class;
             }
-        })}
+        });}
 
 }

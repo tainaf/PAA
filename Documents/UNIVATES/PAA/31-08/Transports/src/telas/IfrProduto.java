@@ -28,6 +28,8 @@ public class IfrProduto extends javax.swing.JInternalFrame {
     int status;
     ProdutosDAO pDAO;
     Produtos p;
+    DAO<Produtos> dao = new DAO<Produtos>();
+    new ProdutosDAO().popularTabela(tblProdutos, "");
 
     /**
      * Creates new form IfrFormaPagamento
