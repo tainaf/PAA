@@ -37,6 +37,9 @@ public class IfrProduto extends javax.swing.JInternalFrame {
         this.setSize(800, 500);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
+       new ProdutosDAO().consultarTodos();
+       tfdCodigo.setEnabled(false);
+       
     }
 
     /**
@@ -62,6 +65,7 @@ public class IfrProduto extends javax.swing.JInternalFrame {
         jSeparator3 = new javax.swing.JSeparator();
         tfPeso = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        tfdCodigo = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblProdutos = new javax.swing.JTable();
@@ -121,7 +125,7 @@ public class IfrProduto extends javax.swing.JInternalFrame {
 
         jLabel3.setText("*Peso:");
 
-        jLabel4.setText("Códiigo");
+        jLabel4.setText("Código:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -144,7 +148,8 @@ public class IfrProduto extends javax.swing.JInternalFrame {
                         .addGap(29, 29, 29)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(tfPeso, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
-                            .addComponent(tfdNome))
+                            .addComponent(tfdNome)
+                            .addComponent(tfdCodigo))
                         .addGap(152, 479, Short.MAX_VALUE)))
                 .addContainerGap())
             .addComponent(jSeparator3)
@@ -152,17 +157,19 @@ public class IfrProduto extends javax.swing.JInternalFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(16, 16, 16)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(tfdNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
+                    .addComponent(jLabel4)
+                    .addComponent(tfdCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfdNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(tfPeso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 237, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 241, Short.MAX_VALUE)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -252,7 +259,7 @@ public class IfrProduto extends javax.swing.JInternalFrame {
                     .addComponent(tfdPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPesquisar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE)
                 .addGap(13, 13, 13)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnExcluir)
@@ -302,7 +309,8 @@ public class IfrProduto extends javax.swing.JInternalFrame {
             pro.setSituacao("a");
 
             dao.salvar(pro);
-        } */
+        } 
+*/
         controleAtualizacao();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
@@ -319,8 +327,7 @@ public class IfrProduto extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        tfdNome.setText("");
-        tfdNome.requestFocus();
+        System.out.println(pDAO.contarTodos() + 1);     
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnSair1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSair1ActionPerformed
@@ -339,8 +346,7 @@ public class IfrProduto extends javax.swing.JInternalFrame {
                 TratarCampos.trataObrigatorios(tfPeso);
                 status++;
                 tfdNome.requestFocus();
-                //coloca valor do código
-               // tfdCodigo.setText(String.valueOf((pDAO.contarTodos() + 1)));
+               
                 break;
             case 1:
                 //salvar novo
@@ -385,6 +391,7 @@ public class IfrProduto extends javax.swing.JInternalFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable tblProdutos;
     private javax.swing.JTextField tfPeso;
+    private javax.swing.JTextField tfdCodigo;
     private javax.swing.JTextField tfdNome;
     private javax.swing.JTextField tfdPesquisar;
     // End of variables declaration//GEN-END:variables

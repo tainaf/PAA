@@ -74,22 +74,4 @@ public class DAO<T> {
         }
     }
 
-    public T consultaId(String campo, Serializable valor, Class clazz) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Criteria criteria = session.createCriteria(clazz);
-        criteria.add(Restrictions.eq(campo, valor));
-        return (T) criteria.uniqueResult();
-    }
-
-    public List<T> queryList(Class clazz) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Criteria criteria = session.createCriteria(clazz);
-        return (List<T>) criteria.list();
-    }
-
-    public List<T> query(String sql) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Query query = session.createQuery(sql);
-        return (List<T>) query.list();
-    }
 }

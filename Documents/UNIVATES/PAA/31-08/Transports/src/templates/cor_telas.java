@@ -14,7 +14,7 @@ import javax.swing.border.LineBorder;
  */
 public class cor_telas {
 
-    public static LineBorder bordaObrigatorio = new LineBorder(Color.ORANGE, 2, true);
+    public static LineBorder bordaObrigatorio = new LineBorder(Color.RED, 2, true);
     public static LineBorder bordaPadrao = new LineBorder(Color.WHITE, 1, true);
 
     /**
