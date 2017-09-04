@@ -28,8 +28,7 @@ public class IfrProduto extends javax.swing.JInternalFrame {
     int status;
     ProdutosDAO pDAO;
     Produtos p;
-    DAO<Produtos> dao = new DAO<Produtos>();
-    new ProdutosDAO().popularTabela(tblProdutos, "");
+    
 
     /**
      * Creates new form IfrFormaPagamento
@@ -297,10 +296,10 @@ public class IfrProduto extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-         /**
-        if (TratarCampos.verificaVazios(btnSalvar)) {
+         
+        /*if (TratarCampos.verificaVazios(btnSalvar)) {
             JOptionPane.showMessageDialog(this, "Os campos marcados com * devem ser preenchidos!");
-        } else {
+        } else {*/
             DAO<Produtos> dao = new DAO<Produtos>();
 
             Produtos pro = new Produtos();
@@ -311,9 +310,9 @@ public class IfrProduto extends javax.swing.JInternalFrame {
             pro.setSituacao("a");
 
             dao.salvar(pro);
-        } 
-*/
-        controleAtualizacao();
+        //} 
+
+        //controleAtualizacao();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
