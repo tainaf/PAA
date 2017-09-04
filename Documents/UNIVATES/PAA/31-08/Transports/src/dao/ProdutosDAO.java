@@ -5,24 +5,19 @@
  */
 package dao;
 
-import apoio.ConexaoBD;
 import java.util.List;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import org.hibernate.Criteria;
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.criterion.Restrictions;
 import entidades.Produtos;
 import hibernate.HibernateUtil;
+import javax.swing.table.TableColumn;
+import org.hibernate.Query;
 import dao.DAO;
-import java.sql.ResultSet;
 
 public class ProdutosDAO {
 
-    
-   
     public List<Object> consultarTodos() {
         List resultado = null;
         Produtos prod = new Produtos();
@@ -38,33 +33,37 @@ public class ProdutosDAO {
             //he.printStackTrace();
         }
         return resultado;
- 
+
     }
-    public int contarTodos() {
+     public int contarTodos() {
         int resultado = 0;
         Produtos prod = new Produtos();
         try {
-            Session sessao = HibernateUtil.getSessionFactory().openSession();
+           Session sessao = HibernateUtil.getSessionFactory().openSession();
             sessao.beginTransaction();
-            org.hibernate.Query q = sessao.createQuery("from produtos");
-            resultado = q.list().size();
+            System.out.println("aqui");
+            org.hibernate.Query q = sessao.createQuery("select max(produtos.id) from produtos");
+            System.out.println("aqui2");
+
+            resultado = q.getMaxResults()+1;
             System.out.println(resultado);
-            sessao.close();
-            return resultado;
+            sessao.close(); 
         } catch (Exception he) {
             System.out.println("erro ao consultar");
-            //he.printStackTrace();
+            System.out.println(resultado);
+             return resultado;
         }
-        return resultado;
- 
+        return resultado +1;
     }
+
+
     public String salvarReturnID(Object o) {
         //inicializa variaveis necessarias
         String retorno = null;
         Session sessao = null;
         Produtos produtos = (Produtos) o;
         //Executa a inserção
-        
+
         sessao = HibernateUtil.getSessionFactory().openSession();
         Transaction t = sessao.beginTransaction();
         try {
@@ -78,9 +77,9 @@ public class ProdutosDAO {
         } finally {
             sessao.close();
         }
-        
-   
+
     }
+
     public void popularTabela(JTable tabela, String criterio) {
         // dados da tabela
         Object[][] dadosTabela = null;
@@ -93,49 +92,37 @@ public class ProdutosDAO {
         cabecalho[3] = "Situação";
 
         // cria matriz de acordo com nº de registros da tabela
-          List resultado = null;
-        try {
-           Session sessao = HibernateUtil.getSessionFactory().openSession();
-            sessao.beginTransaction();
-            org.hibernate.Query q = sessao.createQuery("from produtos");
-
-            resultado = q.list();
-            sessao.close();
-
-        } catch (Exception e) {
-            System.out.println("Erro ao consultar XXX: " + e);
-        }
-
+        List resultado = null;
         int lin = 0;
-
-        // efetua consulta na tabela
         try {
             Session sessao = HibernateUtil.getSessionFactory().openSession();
             sessao.beginTransaction();
-            org.hibernate.Query q = sessao.createQuery("from produtos WHERE produto ILIKE  '%" + criterio + "%'");
-            resultado =q.list();
-            
-             for (Object o : resultado) {
-                 Produtos p =(Produtos)o;
-                 
-                 dadosTabela[lin][0] = p.getId();
-                 dadosTabela[lin][1] = p.getDescricao();
-                 dadosTabela[lin][2] = p.getPeso();
-                 dadosTabela[lin][3] = p.getSituacao();
-                 
-             }
-            
+            org.hibernate.Query q = sessao.createQuery("from Produtos");
+            resultado = q.list();
+            System.out.println("tamanho:" + resultado.size());
+
+            dadosTabela = new Object[resultado.size()][4];
+
+            for (Object o : resultado) {
+                Produtos p = (Produtos) o;
+                dadosTabela[lin][0] = p.getId();
+                dadosTabela[lin][1] = p.getDescricao();
+                dadosTabela[lin][2] = p.getPeso();
+                dadosTabela[lin][3] = p.getSituacao();
+                lin++;
+            }
+
         } catch (Exception e) {
             System.out.println("problemas para popular tabela...");
             System.out.println(e);
         }
-
         // configuracoes adicionais no componente tabela
         tabela.setModel(new DefaultTableModel(dadosTabela, cabecalho) {
             @Override
             // quando retorno for FALSE, a tabela nao é editavel
             public boolean isCellEditable(int row, int column) {
                 return false;
+
             }
 
             // alteracao no metodo que determina a coluna em que o objeto ImageIcon devera aparecer
@@ -147,6 +134,27 @@ public class ProdutosDAO {
                 }
                 return Object.class;
             }
-        });}
+        });
+
+        // permite seleção de apenas uma linha da tabela
+        tabela.setSelectionMode(0);
+
+        // redimensiona as colunas de uma tabela
+        TableColumn column = null;
+        for (int i = 0; i < tabela.getColumnCount(); i++) {
+            column = tabela.getColumnModel().getColumn(i);
+            switch (i) {
+                case 0:
+                    column.setPreferredWidth(17);
+                    break;
+                case 1:
+                    column.setPreferredWidth(140);
+                    break;
+//                case 2:
+//                    column.setPreferredWidth(14);
+//                    break;
+                }
+        }
+    }
 
 }

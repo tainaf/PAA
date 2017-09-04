@@ -73,5 +73,10 @@ public class DAO<T> {
             session.close();
         }
     }
+    public List<T> query(String sql) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Query query = session.createQuery(sql);
+        return (List<T>) query.list();
+    }
 
 }

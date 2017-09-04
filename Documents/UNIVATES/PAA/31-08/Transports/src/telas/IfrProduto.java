@@ -28,8 +28,6 @@ public class IfrProduto extends javax.swing.JInternalFrame {
     int status;
     ProdutosDAO pDAO;
     Produtos p;
-    DAO<Produtos> dao = new DAO<Produtos>();
-    new ProdutosDAO().popularTabela(tblProdutos, "");
 
     /**
      * Creates new form IfrFormaPagamento
@@ -40,7 +38,8 @@ public class IfrProduto extends javax.swing.JInternalFrame {
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
        new ProdutosDAO().consultarTodos();
-       tfdCodigo.setEnabled(false);
+      // tfdCodigo.setEnabled(false);
+     new ProdutosDAO().popularTabela(tblProdutos, title);
        
     }
 
@@ -297,10 +296,10 @@ public class IfrProduto extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-         /**
-        if (TratarCampos.verificaVazios(btnSalvar)) {
-            JOptionPane.showMessageDialog(this, "Os campos marcados com * devem ser preenchidos!");
-        } else {
+         
+        //if (TratarCampos.verificaVazios(jPanel1)) {
+         //   JOptionPane.showMessageDialog(this, "Os campos marcados com * devem ser preenchidos!");
+       // } else {
             DAO<Produtos> dao = new DAO<Produtos>();
 
             Produtos pro = new Produtos();
@@ -311,9 +310,9 @@ public class IfrProduto extends javax.swing.JInternalFrame {
             pro.setSituacao("a");
 
             dao.salvar(pro);
-        } 
-*/
-        controleAtualizacao();
+       // } 
+
+       // controleAtualizacao();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
@@ -329,7 +328,8 @@ public class IfrProduto extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        System.out.println(pDAO.contarTodos() + 1);     
+ProdutosDAO p= new ProdutosDAO();
+p.contarTodos();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnSair1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSair1ActionPerformed
