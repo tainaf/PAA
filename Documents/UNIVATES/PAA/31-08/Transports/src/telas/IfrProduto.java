@@ -297,9 +297,7 @@ public class IfrProduto extends javax.swing.JInternalFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
          
-        //if (TratarCampos.verificaVazios(jPanel1)) {
-         //   JOptionPane.showMessageDialog(this, "Os campos marcados com * devem ser preenchidos!");
-       // } else {
+
             DAO<Produtos> dao = new DAO<Produtos>();
 
             Produtos pro = new Produtos();
@@ -310,9 +308,10 @@ public class IfrProduto extends javax.swing.JInternalFrame {
             pro.setSituacao("a");
 
             dao.salvar(pro);
-       // } 
 
-       // controleAtualizacao();
+        //} 
+
+        //controleAtualizacao();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed

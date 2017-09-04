@@ -10,7 +10,6 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
 
-
 /**
  *
  * @author Tainá Fiegenbaum
@@ -267,9 +266,9 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jcaminhaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcaminhaoActionPerformed
-IfrCaminhao IfrCaminhao = new IfrCaminhao();
+        IfrCaminhao IfrCaminhao = new IfrCaminhao();
         jDesktopPane1.add(IfrCaminhao);
-        IfrCaminhao.setVisible(true); 
+        IfrCaminhao.setVisible(true);
 
     }//GEN-LAST:event_jcaminhaoActionPerformed
 
@@ -286,7 +285,7 @@ IfrCaminhao IfrCaminhao = new IfrCaminhao();
     }//GEN-LAST:event_ListCadastroPromocoesActionPerformed
 
     private void jprodutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jprodutosActionPerformed
-       IfrProduto IfrProduto = new IfrProduto();
+        IfrProduto IfrProduto = new IfrProduto();
         jDesktopPane1.add(IfrProduto);
         IfrProduto.setVisible(true);
     }//GEN-LAST:event_jprodutosActionPerformed
@@ -300,23 +299,25 @@ IfrCaminhao IfrCaminhao = new IfrCaminhao();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void listagem_produtosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listagem_produtosActionPerformed
-              
+
     }//GEN-LAST:event_listagem_produtosActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-    
+
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-      
+
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jclientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jclientesActionPerformed
-        
+
     }//GEN-LAST:event_jclientesActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        
+        IfrEndereco telaEndereco = new IfrEndereco();
+        jDesktopPane1.add(telaEndereco);
+        telaEndereco.setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**
