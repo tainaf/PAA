@@ -40,7 +40,6 @@ public class IfrEndereco extends javax.swing.JInternalFrame {
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
         new EnderecoDAO().consultarTodos();
-        tfdEstado.setEnabled(false);
 
     }
 
@@ -371,6 +370,7 @@ public class IfrEndereco extends javax.swing.JInternalFrame {
     private void controleAtualizacao() {
         switch (status) {
             case 0:
+                
 
                 TratarCampos.trataObrigatorios(tfdEstado);
                 TratarCampos.trataObrigatorios(tfdCidade);

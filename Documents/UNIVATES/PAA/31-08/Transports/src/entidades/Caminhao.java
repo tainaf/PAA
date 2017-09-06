@@ -3,25 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package entidades;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -37,8 +31,10 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Caminhao.findByAno", query = "SELECT c FROM Caminhao c WHERE c.ano = :ano"),
     @NamedQuery(name = "Caminhao.findByCarga", query = "SELECT c FROM Caminhao c WHERE c.carga = :carga"),
     @NamedQuery(name = "Caminhao.findByPlaca", query = "SELECT c FROM Caminhao c WHERE c.placa = :placa"),
-    @NamedQuery(name = "Caminhao.findByCapacidade", query = "SELECT c FROM Caminhao c WHERE c.capacidade = :capacidade")})
+    @NamedQuery(name = "Caminhao.findByCapacidade", query = "SELECT c FROM Caminhao c WHERE c.capacidade = :capacidade"),
+    @NamedQuery(name = "Caminhao.findBySituacao", query = "SELECT c FROM Caminhao c WHERE c.situacao = :situacao")})
 public class Caminhao implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -60,10 +56,9 @@ public class Caminhao implements Serializable {
     @Basic(optional = false)
     @Column(name = "capacidade")
     private double capacidade;
-    @ManyToMany(mappedBy = "caminhaoCollection")
-    private Collection<Usuarios> usuariosCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "caminhaoId")
-    private Collection<Carga> cargaCollection;
+    @Basic(optional = false)
+    @Column(name = "situacao")
+    private String situacao;
 
     public Caminhao() {
     }
@@ -72,13 +67,14 @@ public class Caminhao implements Serializable {
         this.id = id;
     }
 
-    public Caminhao(Integer id, String marca, String ano, double carga, String placa, double capacidade) {
+    public Caminhao(Integer id, String marca, String ano, double carga, String placa, double capacidade, String situacao) {
         this.id = id;
         this.marca = marca;
         this.ano = ano;
         this.carga = carga;
         this.placa = placa;
         this.capacidade = capacidade;
+        this.situacao = situacao;
     }
 
     public Integer getId() {
@@ -129,22 +125,12 @@ public class Caminhao implements Serializable {
         this.capacidade = capacidade;
     }
 
-    @XmlTransient
-    public Collection<Usuarios> getUsuariosCollection() {
-        return usuariosCollection;
+    public String getSituacao() {
+        return situacao;
     }
 
-    public void setUsuariosCollection(Collection<Usuarios> usuariosCollection) {
-        this.usuariosCollection = usuariosCollection;
-    }
-
-    @XmlTransient
-    public Collection<Carga> getCargaCollection() {
-        return cargaCollection;
-    }
-
-    public void setCargaCollection(Collection<Carga> cargaCollection) {
-        this.cargaCollection = cargaCollection;
+    public void setSituacao(String situacao) {
+        this.situacao = situacao;
     }
 
     @Override
