@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package entidades;
 
 import java.io.Serializable;
@@ -16,8 +15,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -40,6 +37,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Usuarios.findBySenha", query = "SELECT u FROM Usuarios u WHERE u.senha = :senha"),
     @NamedQuery(name = "Usuarios.findBySituacao", query = "SELECT u FROM Usuarios u WHERE u.situacao = :situacao")})
 public class Usuarios implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -55,11 +53,6 @@ public class Usuarios implements Serializable {
     @Basic(optional = false)
     @Column(name = "situacao")
     private String situacao;
-    @JoinTable(name = "usuario_caminhao", joinColumns = {
-        @JoinColumn(name = "usuarios_id", referencedColumnName = "id")}, inverseJoinColumns = {
-        @JoinColumn(name = "caminhao_id", referencedColumnName = "id")})
-    @ManyToMany
-    private Collection<Caminhao> caminhaoCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuariosId")
     private Collection<TelasPermissoes> telasPermissoesCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuariosId")
@@ -112,15 +105,6 @@ public class Usuarios implements Serializable {
 
     public void setSituacao(String situacao) {
         this.situacao = situacao;
-    }
-
-    @XmlTransient
-    public Collection<Caminhao> getCaminhaoCollection() {
-        return caminhaoCollection;
-    }
-
-    public void setCaminhaoCollection(Collection<Caminhao> caminhaoCollection) {
-        this.caminhaoCollection = caminhaoCollection;
     }
 
     @XmlTransient

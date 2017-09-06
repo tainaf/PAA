@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package entidades;
 
 import java.io.Serializable;
@@ -33,9 +32,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Carga.findAll", query = "SELECT c FROM Carga c"),
     @NamedQuery(name = "Carga.findById", query = "SELECT c FROM Carga c WHERE c.id = :id"),
+    @NamedQuery(name = "Carga.findByCaminhaoId", query = "SELECT c FROM Carga c WHERE c.caminhaoId = :caminhaoId"),
     @NamedQuery(name = "Carga.findByData", query = "SELECT c FROM Carga c WHERE c.data = :data"),
     @NamedQuery(name = "Carga.findByNfe", query = "SELECT c FROM Carga c WHERE c.nfe = :nfe")})
 public class Carga implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,15 +44,15 @@ public class Carga implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
+    @Column(name = "caminhao_id")
+    private int caminhaoId;
+    @Basic(optional = false)
     @Column(name = "data")
     @Temporal(TemporalType.DATE)
     private Date data;
     @Basic(optional = false)
     @Column(name = "nfe")
     private String nfe;
-    @JoinColumn(name = "caminhao_id", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Caminhao caminhaoId;
     @JoinColumn(name = "endereco_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Endereco enderecoId;
@@ -66,8 +67,9 @@ public class Carga implements Serializable {
         this.id = id;
     }
 
-    public Carga(Integer id, Date data, String nfe) {
+    public Carga(Integer id, int caminhaoId, Date data, String nfe) {
         this.id = id;
+        this.caminhaoId = caminhaoId;
         this.data = data;
         this.nfe = nfe;
     }
@@ -78,6 +80,14 @@ public class Carga implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public int getCaminhaoId() {
+        return caminhaoId;
+    }
+
+    public void setCaminhaoId(int caminhaoId) {
+        this.caminhaoId = caminhaoId;
     }
 
     public Date getData() {
@@ -94,14 +104,6 @@ public class Carga implements Serializable {
 
     public void setNfe(String nfe) {
         this.nfe = nfe;
-    }
-
-    public Caminhao getCaminhaoId() {
-        return caminhaoId;
-    }
-
-    public void setCaminhaoId(Caminhao caminhaoId) {
-        this.caminhaoId = caminhaoId;
     }
 
     public Endereco getEnderecoId() {

@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package entidades;
 
 import java.io.Serializable;
@@ -32,6 +31,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "TelasPermissoes.findById", query = "SELECT t FROM TelasPermissoes t WHERE t.id = :id"),
     @NamedQuery(name = "TelasPermissoes.findBySituacao", query = "SELECT t FROM TelasPermissoes t WHERE t.situacao = :situacao")})
 public class TelasPermissoes implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

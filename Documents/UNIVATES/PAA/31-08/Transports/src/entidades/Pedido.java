@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package entidades;
 
 import java.io.Serializable;
@@ -43,11 +42,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Pedido.findByHora", query = "SELECT p FROM Pedido p WHERE p.hora = :hora"),
     @NamedQuery(name = "Pedido.findBySituacao", query = "SELECT p FROM Pedido p WHERE p.situacao = :situacao")})
 public class Pedido implements Serializable {
-    @JoinTable(name = "pedido_produtos", joinColumns = {
-        @JoinColumn(name = "pedido_id", referencedColumnName = "id")}, inverseJoinColumns = {
-        @JoinColumn(name = "produtos_id", referencedColumnName = "id")})
-    @ManyToMany
-    private Collection<Produtos> produtosCollection;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -65,6 +60,11 @@ public class Pedido implements Serializable {
     @Basic(optional = false)
     @Column(name = "situacao")
     private String situacao;
+    @JoinTable(name = "pedido_produtos", joinColumns = {
+        @JoinColumn(name = "pedido_id", referencedColumnName = "id")}, inverseJoinColumns = {
+        @JoinColumn(name = "produtos_id", referencedColumnName = "id")})
+    @ManyToMany
+    private Collection<Produtos> produtosCollection;
     @JoinColumn(name = "pessoas_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Pessoas pessoasId;
@@ -120,6 +120,15 @@ public class Pedido implements Serializable {
         this.situacao = situacao;
     }
 
+    @XmlTransient
+    public Collection<Produtos> getProdutosCollection() {
+        return produtosCollection;
+    }
+
+    public void setProdutosCollection(Collection<Produtos> produtosCollection) {
+        this.produtosCollection = produtosCollection;
+    }
+
     public Pessoas getPessoasId() {
         return pessoasId;
     }
@@ -168,15 +177,6 @@ public class Pedido implements Serializable {
     @Override
     public String toString() {
         return "entidades.Pedido[ id=" + id + " ]";
-    }
-
-    @XmlTransient
-    public Collection<Produtos> getProdutosCollection() {
-        return produtosCollection;
-    }
-
-    public void setProdutosCollection(Collection<Produtos> produtosCollection) {
-        this.produtosCollection = produtosCollection;
     }
     
 }

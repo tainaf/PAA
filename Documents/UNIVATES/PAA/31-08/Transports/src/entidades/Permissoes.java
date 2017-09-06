@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package entidades;
 
 import java.io.Serializable;
@@ -41,6 +40,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Permissoes.findByPermissaoconsulta", query = "SELECT p FROM Permissoes p WHERE p.permissaoconsulta = :permissaoconsulta"),
     @NamedQuery(name = "Permissoes.findByPermissoesativas", query = "SELECT p FROM Permissoes p WHERE p.permissoesativas = :permissoesativas")})
 public class Permissoes implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

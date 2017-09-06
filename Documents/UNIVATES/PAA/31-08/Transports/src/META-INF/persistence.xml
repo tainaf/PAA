@@ -6,15 +6,18 @@
     <class>entidades.Endereco</class>
     <class>entidades.Auditoria</class>
     <class>entidades.Logerros</class>
-    <class>entidades.Pessoas</class>
-    <class>entidades.Produtos</class>
     <class>entidades.Pedido</class>
     <class>entidades.Telas</class>
-    <class>entidades.Usuarios</class>
     <class>entidades.Caminhao</class>
     <class>entidades.Permissoes</class>
     <class>entidades.Carga</class>
     <class>entidades.PedidoProdutos</class>
+    <class>entidades.Pessoa</class>
+    <class>entidades.Usuario</class>
+    <class>entidades.Produtos</class>
+    <class>entidades.Pessoas</class>
+    <class>entidades.Usuarios</class>
+    <class>entidades.UsuarioCaminhao</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/Transports"/>
       <property name="javax.persistence.jdbc.user" value="postgres"/>

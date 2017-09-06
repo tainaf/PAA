@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package entidades;
 
 import java.io.Serializable;
@@ -35,8 +34,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Produtos.findByPeso", query = "SELECT p FROM Produtos p WHERE p.peso = :peso"),
     @NamedQuery(name = "Produtos.findBySituacao", query = "SELECT p FROM Produtos p WHERE p.situacao = :situacao")})
 public class Produtos implements Serializable {
-    @ManyToMany(mappedBy = "produtosCollection")
-    private Collection<Pedido> pedidoCollection;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -52,6 +50,8 @@ public class Produtos implements Serializable {
     @Basic(optional = false)
     @Column(name = "situacao")
     private String situacao;
+    @ManyToMany(mappedBy = "produtosCollection")
+    private Collection<Pedido> pedidoCollection;
 
     public Produtos() {
     }
@@ -99,6 +99,15 @@ public class Produtos implements Serializable {
         this.situacao = situacao;
     }
 
+    @XmlTransient
+    public Collection<Pedido> getPedidoCollection() {
+        return pedidoCollection;
+    }
+
+    public void setPedidoCollection(Collection<Pedido> pedidoCollection) {
+        this.pedidoCollection = pedidoCollection;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -122,15 +131,6 @@ public class Produtos implements Serializable {
     @Override
     public String toString() {
         return "entidades.Produtos[ id=" + id + " ]";
-    }
-
-    @XmlTransient
-    public Collection<Pedido> getPedidoCollection() {
-        return pedidoCollection;
-    }
-
-    public void setPedidoCollection(Collection<Pedido> pedidoCollection) {
-        this.pedidoCollection = pedidoCollection;
     }
     
 }

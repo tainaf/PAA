@@ -38,7 +38,7 @@ public class CaminhaoDAO {
         Object[][] dadosTabela = null;
 
         // cabecalho da tabela
-        Object[] cabecalho = new Object[4];
+        Object[] cabecalho = new Object[7];
         cabecalho[0] = "Id";
         cabecalho[1] = "Marca";
         cabecalho[2] = "Ano";
@@ -59,7 +59,7 @@ public class CaminhaoDAO {
             resultado = q.list();
             System.out.println("tamanho:" + resultado.size());
 
-            dadosTabela = new Object[resultado.size()][4];
+            dadosTabela = new Object[resultado.size()][7];
 
             for (Object o : resultado) {
                 Caminhao cam = (Caminhao) o;
